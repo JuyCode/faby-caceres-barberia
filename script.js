@@ -203,19 +203,6 @@ async function confirmarTurno() {
     const mensajeCodificado = encodeURIComponent(mensaje);
     const urlWhatsApp = numeroBarbero ? `https://wa.me/${numeroBarbero}?text=${mensajeCodificado}` : "#";
 
-    document.querySelectorAll('.booking-section').forEach(s => {
-        s.classList.remove('active');
-        s.style.display = 'none';
-    });
-    
-    const paso5 = document.getElementById('step-5');
-    if (paso5) {
-        paso5.style.display = 'block';
-        paso5.classList.add('active');
-    }
-    
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
     try {
         const duplicado = await tursoQuery(
             'SELECT id FROM turnos WHERE fecha = ? AND hora = ? AND barbero = ?',
@@ -233,10 +220,10 @@ async function confirmarTurno() {
             [nombre, barbero, servicio, fecha, hora, pago.value, precio, telefonoCliente, numeroBarbero]
         );
 
-        document.getElementById('whatsapp-btn').href = urlWhatsApp;
+        window.location.href = urlWhatsApp;
     } catch (err) {
         console.error('Error:', err);
-        document.getElementById('whatsapp-btn').href = urlWhatsApp;
+        window.location.href = urlWhatsApp;
     }
 }
 
