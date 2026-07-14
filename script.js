@@ -186,7 +186,7 @@ async function confirmarTurno() {
     const fechaFormateada = fecha.split('-').reverse().join('/');
 
     const telefonosBarberos = {
-        "Faby": "5493518063041"
+        "Faby": "5492995367281"
     };
     const numeroBarbero = (telefonosBarberos[barbero] || "").replace(/\s+/g, '').replace(/-/g, '').replace(/\+/g, '');
 
